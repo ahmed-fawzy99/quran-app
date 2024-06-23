@@ -1,0 +1,6 @@
+*.swp
+*.sfd-??
+Kitab.gggls
+test.rtf
+/venv
+/build

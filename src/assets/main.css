@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@font-face {
+    font-family: 'kitab';
+    src: url('../fonts/kitab-font/Kitab-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'kitab';
+    src: url('../fonts/kitab-font/Kitab-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@tailwind base;
+
+@layer base {
+
+    html {
+        @apply text-neutral-800;
+        /* Hiding Scrollbar */
+        -ms-overflow-style: none; /* IE 10+ */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    html::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
+
+    html.dark {
+        @apply text-neutral-50 bg-neutral-800;
+    }
+
+    p {
+        @apply text-stone-900 dark:text-gray-100;
+    }
+
+}
+
+@tailwind components;
+@tailwind utilities;
+
+.v-enter-active, .v-leave-active {
+    transition: all 0.5s ease-in-out;
+}
+
+.v-enter-from, .v-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+
