@@ -572,10 +572,10 @@ document.addEventListener('keydown', (event) => {
 
     <!--Sticky Info Bar-->
     <div class="flex justify-center">
-      <div class="fixed bottom-8 w-1/3 h-16 bg-amber-400 rounded-full text-center shadow-md">
+      <div class="fixed bottom-8 w-full sm:w-2/3 md:w-1/2 lg:w-1/3 h-16 bg-amber-400 rounded-full text-center shadow-md">
         <div class="flex items-center justify-between mx-3 h-full" dir="ltr">
           <!--Media Player-->
-          <audio id="audio-player"/>
+          <audio id="audio-player"></audio>
           <div class="flex items-center gap-2">
             <div id="media-player" @click="togglePlay"
                  class="inline-flex items-center justify-center rounded-full ring-1 ring-slate-900/5 shadow-md cursor-pointer">
@@ -596,8 +596,8 @@ document.addEventListener('keydown', (event) => {
                 <foreignObject x="10" y="10" width="30" height="30" class="overflow-visible">
                   <LoadingSpinner v-if="isLoading"/>
                   <div v-else>
-                    <PauseIcon class="text-slate-900  dark:text-slate-700" v-if="isPlaying"/>
-                    <PlayIcon class="text-slate-900  dark:text-slate-700" v-else/>
+                    <PauseIcon class="text-slate-900 dark:text-slate-700" v-if="isPlaying"/>
+                    <PlayIcon class="text-slate-900 dark:text-slate-700" v-else/>
                   </div>
                 </foreignObject>
               </svg>
@@ -609,34 +609,35 @@ document.addEventListener('keydown', (event) => {
           <!--Surah Selector-->
           <button :id="2" @click="playSurah()"
                   class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none
-                            focus:ring-primary-300 font-medium rounded-full text-sm px-3 py-2.5 text-center inline-flex
-                            items-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                     focus:ring-primary-300 font-medium rounded-full text-sm lg:px-3 lg:py-2.5 sm:p-1.5 text-center inline-flex
+                     items-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           >
             <PlayWithCircleIcon v-if="i18n.locale.value === 'en'" class="mr-1"/>
             {{ $t("Play Full Surah") }}
             <PlayWithCircleIcon v-if="i18n.locale.value === 'ar'" class="ml-1"/>
           </button>
+
           <DropdownSearch
               modal-id="surah-selector"
               :btnText="$t('Select Surah') + ' - ' +
-                                  (i18n.locale.value === 'ar' ?
-                                    normalizeArabic(quran['data']['surahs'][surahSelector]['name'], false) :
-                                    quran['data']['surahs'][surahSelector]['englishName'])"
+                              (i18n.locale.value === 'ar' ?
+                                normalizeArabic(quran['data']['surahs'][surahSelector]['name'], false) :
+                                quran['data']['surahs'][surahSelector]['englishName'])"
           >
             <template #input>
               <input v-model="surahSearch" type="text" id="input-group-search"
-                     class="block w-full p-2 ps-10 text-sm text-base-900 border border-base-300 rounded-lg
-                                          bg-base-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-base-600
-                                          dark:border-base-500 dark:placeholder-base-400 dark:text-white
-                                          dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                     class="block w-full lg:p-2 sm:p-1.5 text-sm text-base-900 border border-base-300 rounded-lg
+                                  bg-base-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-base-600
+                                  dark:border-base-500 dark:placeholder-base-400 dark:text-white
+                                  dark:focus:ring-primary-500 dark:focus:border-primary-500"
                      :placeholder="$t('Search for a surah')">
             </template>
 
             <template #records>
               <li v-for="surah in quran['data']['surahs']
-                                .map(surah => ({name: surah.name, englishName: surah.englishName, number:surah.number}))
-                                .filter((surah) => (normalizeArabic(surah.name).indexOf(normalizeArabic(surahSearch))) !== -1
-                                || (surah.englishName.toLowerCase().indexOf(surahSearch.toLowerCase())) !== -1)"
+                            .map(surah => ({name: surah.name, englishName: surah.englishName, number:surah.number}))
+                            .filter((surah) => (normalizeArabic(surah.name).indexOf(normalizeArabic(surahSearch))) !== -1
+                            || (surah.englishName.toLowerCase().indexOf(surahSearch.toLowerCase())) !== -1)"
                   class="flex items-center rounded hover:bg-base-100 dark:hover:bg-base-600" dir="rtl">
                 <p @click="selectSurah(surah.number)"
                    class="w-full py-2 text-xl font-medium text-base-900 rounded dark:text-base-300 cursor-pointer font-kitab">
@@ -647,6 +648,7 @@ document.addEventListener('keydown', (event) => {
         </div>
       </div>
     </div>
+
 
     <!--Scroll to Top Button-->
     <TransitionGroup>

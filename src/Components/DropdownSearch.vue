@@ -33,7 +33,7 @@ onMounted(() => {
 
     <!-- Dropdown menu -->
     <div :id="modalId" class="z-10 hidden bg-white rounded-lg shadow w-60 dark:bg-base-700">
-        <div class="p-3">
+        <div class="">
             <label for="input-group-search" class="sr-only">{{ $t("Search") }}</label>
             <div class="relative">
                 <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
