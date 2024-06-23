@@ -30,7 +30,7 @@ const surahSelector = ref(localStorage.getItem('surahSelector') ? parseInt(local
 const reciterSelector = ref(localStorage.getItem('reciterSelector') ?? 'ar.alafasy');
 const tafsirSelector = ref(localStorage.getItem('tafsirSelector') ?? 'ar.muyassar');
 const tafsirTranslationSwitch = ref(localStorage.getItem('tafsirTranslationSwitch') === 'true' || false); // localStorage doesn't store boolean values
-const proxy = 'http://cors.almoroj.com/';
+const proxy = 'https://cors.almoroj.com/';
 const isLoading = ref(false);
 const isPlaying = ref(false);
 const circlePercentage = ref(0);
