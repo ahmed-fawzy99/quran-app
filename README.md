@@ -6,4 +6,4 @@ This project is a part of another under-development project.
 https://ahmed-fawzy99.github.io/quranApp/
 
 # Credits
-This app was built using [Quran API]([https://duckduckgo.com](https://alquran.cloud/api)).
+This app was built using [Quran API](https://alquran.cloud/api).
