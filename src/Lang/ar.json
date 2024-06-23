@@ -158,6 +158,7 @@
   "On": "تفعيل",
   "Off": "إيقاف",
   "Failed to fetch Ayah Audio": "خطأ في تحميل الآية",
+  "Failed to fetch Ayah Audio. Source is down.": "خطأ في تحميل الآية، المصدر غير متاح",
   "Failed to fetch Tafsir Editions: ": "خطأ في تحميل التفسيرات: ",
   "Failed to fetch Surah\\'s Tafseer: ": "خطأ في تحميل تفسير السورة: ",
   "Stop Here": "توقف هنا"

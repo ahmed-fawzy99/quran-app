@@ -30,7 +30,7 @@ const surahSelector = ref(localStorage.getItem('surahSelector') ? parseInt(local
 const reciterSelector = ref(localStorage.getItem('reciterSelector') ?? 'ar.alafasy');
 const tafsirSelector = ref(localStorage.getItem('tafsirSelector') ?? 'ar.muyassar');
 const tafsirTranslationSwitch = ref(localStorage.getItem('tafsirTranslationSwitch') === 'true' || false); // localStorage doesn't store boolean values
-
+const proxy = 'http://cors.almoroj.com/';
 const isLoading = ref(false);
 const isPlaying = ref(false);
 const circlePercentage = ref(0);
@@ -131,10 +131,10 @@ function togglePlay() {
 let curBestBitrate = null;
 async function fetchAyahSrc(ayahNumber) {
   if (curBestBitrate){
-    return `https://cdn.islamic.network/quran/audio/${curBestBitrate}/${reciterSelector.value}/${ayahNumber}.mp3`
+    return `${proxy}https://cdn.islamic.network/quran/audio/${curBestBitrate}/${reciterSelector.value}/${ayahNumber}.mp3`
   }
   for (const bitrate of bitrates) {
-    let url = `https://cdn.islamic.network/quran/audio/${bitrate}/${reciterSelector.value}/${ayahNumber}.mp3`;
+    let url = `${proxy}https://cdn.islamic.network/quran/audio/${bitrate}/${reciterSelector.value}/${ayahNumber}.mp3`;
     try {
       const response = await fetch(url);
       if (response.ok) {
@@ -145,7 +145,8 @@ async function fetchAyahSrc(ayahNumber) {
       console.log(err);
     }
   }
-  useToast().error(i18n.t('Failed to fetch Ayah Audio'));
+  isLoading.value = false;
+  useToast().error(i18n.t('Failed to fetch Ayah Audio. Source is down.'));
 }
 
 async function playAyah(ayahNumber = null) {
@@ -153,11 +154,11 @@ async function playAyah(ayahNumber = null) {
   if (!ayahNumber) {
     return;
   }
+  isLoading.value = true;
   audioElem.src = await fetchAyahSrc(ayahNumber);
   const durationElement = document.getElementById("ayah-duration");
 
   return new Promise((resolve, reject) => {
-    isLoading.value = true;
     audioElem.load();
     audioElem.addEventListener("canplay", function () {
       circlePercentage.value = 0; // fix the circle percentage ui bug
@@ -172,6 +173,8 @@ async function playAyah(ayahNumber = null) {
 
       audioElem.addEventListener("error", function (err) {
         useToast().error(i18n.t('Failed to Play Ayah: ') + err);
+        console.log('failed to load ayah:', err); // log the error for debugging
+        isLoading.value = false;
         reject(err);
       });
       audioElem.addEventListener("ended", function () {
@@ -262,6 +265,7 @@ async function copyToClipboard() {
   } catch (err) {
     useToast().error(i18n.t('Failed to copy Ayah to clipboard: ' + err));
   }
+  showOptionsDropdown.value = !showOptionsDropdown.value;
 }
 async function tafsirAyah(ayahNumber) {
   try {
