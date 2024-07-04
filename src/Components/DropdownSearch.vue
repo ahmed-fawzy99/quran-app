@@ -1,7 +1,6 @@
 <script setup>
 import {initDropdowns} from "flowbite";
 import {onMounted} from "vue";
-import {normalizeArabic} from "../Helpers/normalizeArabic.js";
 
 const props = defineProps({
     modalId: String,

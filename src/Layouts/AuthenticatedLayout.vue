@@ -11,8 +11,8 @@ const isDark = useDark();
 const toggleDark = useToggle(isDark);
 
 const locales = {
-    'en': ['English','🇺🇸'],
-    'ar': ['العربية', '🇵🇸'],
+    'en-US': ['English','🇺🇸'],
+    'ar-EG': ['العربية', '🇵🇸'],
 };
 
 onMounted(() => {
@@ -24,7 +24,7 @@ onMounted(() => {
 function switchLocale(newLocale){
     locale.value = newLocale;
     localStorage.setItem('locale', newLocale);
-    document.documentElement.setAttribute('dir', newLocale === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('dir', newLocale === 'ar-EG' ? 'rtl' : 'ltr');
     document.documentElement.setAttribute('lang', newLocale);
 }
 

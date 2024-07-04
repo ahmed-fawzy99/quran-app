@@ -15,12 +15,12 @@ import en from '@/Lang/en.json'
 // Locale Stuff
 let locale = localStorage.getItem('locale') ;
 if (!locale) {
-    localStorage.setItem('locale', 'ar');
-    locale = 'ar';
+    localStorage.setItem('locale', 'ar-EG');
+    locale = 'ar-EG';
 }
 
 const numberFormats = {
-    'en': {
+    'en-US': {
         currency: {
             style: 'currency', currency: 'USD', notation: 'standard'
         },
@@ -31,7 +31,7 @@ const numberFormats = {
             style: 'percent', useGrouping: true
         }
     },
-    'ar': {
+    'ar-EG': {
         currency: {
             style: 'currency', currency: 'EGP', useGrouping: true, currencyDisplay: 'symbol'
         },
@@ -46,7 +46,7 @@ const numberFormats = {
 const i18n = createI18n({
     legacy: false,
     locale: locale,
-    fallbackLocale: 'ar',
+    fallbackLocale: 'ar-EG',
     numberFormats,
     messages: {
         ar: ar,

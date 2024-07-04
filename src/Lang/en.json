@@ -90,6 +90,7 @@
     "Listen To Ayah": "Listen To Ayah",
     "Ayah copied to clipboard!": "Ayah copied to clipboard!",
     "Failed to copy Ayah to clipboard: ": "Failed to copy Ayah to clipboard: ",
+    "Play Surah": "Play Surah",
     "Play Full Surah": "Play Full Surah",
     "Failed to Play Ayah: ": "Failed to Play Ayah: ",
     "Ayah Interpretation": "Ayah Explanation",
@@ -159,7 +160,6 @@
     "On": "On",
     "Off": "Off",
     "Failed to fetch Ayah Audio": "Failed to fetch Ayah Audio",
-    "Failed to fetch Ayah Audio. Source is down.": "Failed to fetch Ayah Audio. Source is down.",
     "Failed to fetch Tafsir Editions: ": "Failed to fetch Tafsir Editions: ",
     "Failed to fetch Surah's Tafseer: ": "Failed to fetch Surah's Tafseer: ",
     "Stop Here": "Stop Here"
