@@ -5,7 +5,7 @@ This is a Quran explorer, reciter, and tafsir guide that uses the [quran.com API
 The audio recitation is provided by Quran.com API. The audio sources sometimes are not available or they change. If you detect any issues with the audio, please raise an issue, or better yet, contribute to the project by fixing the audio source.
 
 ## Project Link
-https://ahmed-fawzy99.github.io/quranApp/
+https://ahmed-fawzy99.github.io/quran-app/
 
 
 # Clone the project
